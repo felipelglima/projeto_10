@@ -1,0 +1,166 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+
+    --fc-primary: #323238;
+    --bg-primary: #E5E5E5;
+    --bc-primary: #ceced3;
+
+    --ic-pressed: white;
+    --bc-pressed: #02799D;
+}
+
+@keyframes topleft{
+    0%{
+        transform: translate(10rem, 10rem);
+        opacity: 0.5;
+    }
+    100%{transform: translate(0, 0);}
+}
+
+@keyframes topright{
+    0%{transform: translate(-10rem, 10rem);}
+    25%{
+        transform: translate(-10rem, 10rem);
+        opacity: 0.5;
+    }
+    100%{transform: translate(0, 0);  }
+}
+
+@keyframes bottomleft{
+    0%{transform: translate(10rem, -10rem);}
+    50%{
+        transform: translate(10rem, -10rem);
+        opacity: 0.5;
+    }
+    100%{transform: translate(0, 0);}
+}
+
+@keyframes bottomright{
+    0%{transform: translate(-10rem, -10rem);}
+    75%{
+        transform: translate(-10rem, -10rem);
+        opacity: 0.5;
+    }
+    100%{transform: translate(0, 0);}
+}
+
+@keyframes forwardback{
+    0%{
+        transform: scale(0.1);
+        opacity: 0.1;
+    }
+    50%{transform: scale(1.2)}
+    100%{transform: scale(1);}
+}
+
+.hide{
+    display: none;
+}
+
+main{
+    background: var(--bg-primary);
+
+    min-height: 100vh;
+    width: 100%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#timer{
+    animation: forwardback 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+#time{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12rem;
+    color: var(--fc-primary);
+
+    display: flex;
+}
+
+#buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+button{
+   background: none;
+   border: none;
+   outline: none;
+
+   cursor: pointer;
+
+   transition: ease 500ms;
+}
+
+#sounds{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 3.2rem;
+}
+
+#sounds button{
+    background: var(--bc-primary);
+
+    padding: 4.8rem;
+    border-radius: 2.4rem;
+}
+
+#buttons button:hover,
+#sounds button:hover,
+#buttons button:focus,
+#sounds button:focus{
+    filter: brightness(1.5);
+}
+
+#buttons button:active,
+#sounds button:active{
+    scale: 0.8;
+}
+
+.forest{
+    animation: topleft 1s cubic-bezier(0.65, 0.05, 0.36, 1);
+    z-index: 4;
+}
+
+.rain{
+    animation: topright 1.25s cubic-bezier(0.65, 0.05, 0.36, 1);
+    z-index: 3;
+}
+
+.coffeeShop{
+    animation: bottomleft 1.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+    z-index: 2;
+}
+
+.fireplace{
+    animation: bottomright 1.75s cubic-bezier(0.65, 0.05, 0.36, 1);
+    z-index: 1;
+}
+
+#sounds .selected{
+    background: var(--bc-pressed);
+}
+
+.selected path{
+    fill: var(--ic-pressed);
+}
+
+@media(max-width: 700px){
+    main{
+        flex-direction: column;
+        gap: 5rem;
+
+        padding: 5rem 0;
+    }
+}
